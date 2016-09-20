@@ -1,0 +1,50 @@
+[
+  { "name": "guard",
+    "score": 1
+  },  
+  { "name": "guard",
+    "score": 1
+  },  
+  { "name": "guard",
+    "score": 1
+  },  
+  { "name": "guard",
+    "score": 1
+  },  
+  { "name": "guard",
+    "score": 1
+  },  
+  { "name": "priest",
+    "score": 2
+  },
+  { "name": "priest",
+    "score": 2
+  },  
+  { "name": "baron",
+    "score": 3
+  },  
+  { "name": "baron",
+    "score": 3
+  },  
+  { "name": "handmaiden",
+    "score": 4
+  },  
+  { "name": "handmaiden",
+    "score": 4
+  },  
+  { "name": "prince",
+    "score": 5
+  },  
+  { "name": "prince",
+    "score": 5
+  },  
+  { "name": "king",
+    "score": 6
+  },  
+  { "name": "countess",
+    "score": 7
+  },  
+  { "name": "princess",
+    "score": 8
+  }  
+]
