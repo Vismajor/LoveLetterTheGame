@@ -1,14 +1,18 @@
 var Game = require('../models/game');
 var Player = require('../models/player');
+var Deck = require('../models/deck');
+var cards = require('../cards.json');
 var assert = require('assert');
 
 describe('Game', function () {
   var game;
   var player1;
   var player2;
+  var deck;
 
   beforeEach(function () {
-    game = new Game();
+    deck = new Deck(cards);
+    game = new Game({deck: deck});
     player1 = new Player({name: "Zsolt"});
     player2 = new Player({name: "Nora"});
   });
@@ -21,5 +25,9 @@ describe('Game', function () {
     game.addPlayer(player1)
     assert.equal(game.players[0].name, "Zsolt");
   });
+
+  it('should have a deck with 16 cards', function(){
+    assert.equal(game.deck.numberOfCards(), 16)
+  })
 
 })

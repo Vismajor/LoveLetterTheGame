@@ -1,5 +1,6 @@
-var Game = function(){
+var Game = function(options){
 	this.players = [];
+  this.deck = options.deck;
 }
 
 Game.prototype = {
