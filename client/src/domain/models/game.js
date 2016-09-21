@@ -32,8 +32,18 @@ Game.prototype = {
     }
     this.outOfRoundPlayers.push(match)
   },
+  rotatePlayers: function(reverse = false){
+    var players = this.players;
+    if(reverse)
+      players.unshift(players.pop());
+    else
+      players.push(players.shift());
+  }, 
   setStartingPlayer: function(){
+    var players = this.players;
     var startingPlayer = this.players[Math.floor(Math.random() * this.players.length)];
+    while(players[0].id != startingPlayer.id)
+      this.rotatePlayers();
     return startingPlayer;
   },
   startRoundDeal: function(){
