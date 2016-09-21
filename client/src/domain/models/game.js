@@ -2,7 +2,7 @@ var Game = function(options){
 	this.players = options.players;
   this.deck = options.deck;
   this.discards = [];
-  this.activePlayer = this.players[0];
+  this.activePlayer = this.setStartingPlayer();
   this.outOfRoundPlayers = [];
 }
 
@@ -33,8 +33,8 @@ Game.prototype = {
     this.outOfRoundPlayers.push(match)
   },
   setStartingPlayer: function(){
-    // this.activePlayer = this.players[0];
-    //TODO add rotater
+    var startingPlayer = this.players[Math.floor(Math.random() * this.players.length)];
+    return startingPlayer;
   },
   startRoundDeal: function(){
     var players = this.players
