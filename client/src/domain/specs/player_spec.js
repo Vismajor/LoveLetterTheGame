@@ -1,11 +1,18 @@
 var Player = require('../models/player');
+var Card = require('../models/card');
 var assert = require('assert');
 
 describe('Player', function(){
   var player;
+  var card;
 
   beforeEach(function(){
-    player = new Player({name: "HungarianBarbarian"});
+    player = new Player({name: "HungarianBarbarian", id: 1});
+    card = new Card({name: "guard", score: 1})
+  });
+
+  it('should have an id', function(){
+    assert.equal(player.id, 1);
   });
 
   it('should have a name after creation', function(){
@@ -13,6 +20,11 @@ describe('Player', function(){
   });
 
   it('should have an empty array for cards', function(){
-    assert.equal(player.cards.length, 0);
+    assert.equal(player.numberOfCards(), 0);
+  });
+
+  it('should be able to receive card', function(){
+    player.getCard(card)
+    assert.equal(player.numberOfCards(), 1);
   });
 })

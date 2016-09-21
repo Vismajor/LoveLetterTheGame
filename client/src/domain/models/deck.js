@@ -2,7 +2,7 @@ var Card = require('./card');
 
 var Deck = function(cards){
   this.cards = []
-  this.getCards(cards);
+  this.setupDeck(cards);
   this.shuffleCards();
 }
 
@@ -10,13 +10,17 @@ Deck.prototype = {
   addCard: function(card){
     this.cards.push(card);
   },
-  getCards: function(cards){
+  setupDeck: function(cards){
     for(card of cards){
       this.addCard(new Card(card));
     }
   },
   numberOfCards: function(){
     return this.cards.length
+  },
+  giveCard: function(numToDiscard = 1){
+    givenCard = this.cards.splice(0, numToDiscard)[0];
+    return givenCard
   },
   shuffleCards: function(){
     var numberOfCards = this.numberOfCards();

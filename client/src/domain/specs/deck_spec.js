@@ -23,6 +23,11 @@ describe('Deck', function(){
 
   it('should have 15 cards', function(){
     assert.equal(deck.numberOfCards(), 16);
+  }); 
+
+  it('should be able to discard a card', function(){
+    deck.giveCard();
+    assert.equal(deck.numberOfCards(), 15);
   });
 
 

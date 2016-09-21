@@ -12,22 +12,51 @@ describe('Game', function () {
 
   beforeEach(function () {
     deck = new Deck(cards);
-    game = new Game({deck: deck});
-    player1 = new Player({name: "Zsolt"});
-    player2 = new Player({name: "Nora"});
+    player1 = new Player({name: "Zsolt", id: 1});
+    player2 = new Player({name: "Nora", id: 2});
+    game = new Game({deck: deck, players: [player1, player2]});
   });
 
   it('should have an empty array for players', function () {
-    assert.equal(game.players.length, 0);
+    assert.equal(game.players.length, 2);
   }); 
 
   it('should be able to add players', function () {
-    game.addPlayer(player1)
     assert.equal(game.players[0].name, "Zsolt");
   });
 
   it('should have a deck with 16 cards', function(){
-    assert.equal(game.deck.numberOfCards(), 16)
-  })
+    assert.equal(game.deck.numberOfCards(), 16);
+  });
+
+  it('should discard one card from the deck AND add it to the discarded pile', function(){
+    game.discard();
+    assert.equal(game.discards.length, 1);
+    assert.equal(game.deck.numberOfCards(), 15);
+  });
+
+  it('should have an active player', function(){
+    assert.equal(game.activePlayer.name, "Zsolt");
+  });
+
+  it('should deal a card to all players', function(){
+    game.startRoundDeal();
+    assert.equal(game.players[0].numberOfCards(), 1);
+    assert.equal(game.players[1].numberOfCards(), 1);
+  });
+
+  it('should be able to put people out of round', function(){
+    game.outOfRound(1)
+    assert.equal(game.numberOfPlayers(), 1);
+    assert.equal(game.outOfRoundPlayers.length, 1);
+  });
+
+  it('should deal a card to all players, put one in the discard pile, and have an active player at game start', function(){
+    game.startRound();
+    assert.equal(game.players[0].numberOfCards(), 1);
+    assert.equal(game.players[1].numberOfCards(), 1);
+    assert.equal(game.activePlayer.name, "Zsolt");
+    assert.equal(game.discards.length, 1);
+  });
 
 })
