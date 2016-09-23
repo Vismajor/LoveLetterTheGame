@@ -5,7 +5,7 @@ describe('Card', function(){
   var card;
 
   beforeEach(function(){
-    card = new Card({name: "Guard", score: 1});
+    card = new Card({name: "Guard", score: 1, id: 1});
   });
 
   it('should have a name after creation', function(){
@@ -14,5 +14,9 @@ describe('Card', function(){
 
   it('should have a score', function(){
     assert.equal(card.score, 1);
+  });
+
+  it('should have an id', function(){
+    assert.equal(card.id, 1);
   });
 })

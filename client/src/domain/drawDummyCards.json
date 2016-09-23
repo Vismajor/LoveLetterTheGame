@@ -19,48 +19,48 @@
     "score": 1,
     "id": 5
   },  
-  { "name": "priest",
-    "score": 2,
+  { "name": "guard",
+    "score": 1,
     "id": 6
   },
-  { "name": "priest",
-    "score": 2,
+  { "name": "guard",
+    "score": 1,
     "id": 7
   },  
-  { "name": "baron",
-    "score": 3,
+  { "name": "guard",
+    "score": 1,
     "id": 8
   },  
-  { "name": "baron",
-    "score": 3,
+  { "name": "guard",
+    "score": 1,
     "id": 9
   },  
-  { "name": "handmaiden",
-    "score": 4,
+  { "name": "guard",
+    "score": 1,
     "id": 10
   },  
-  { "name": "handmaiden",
-    "score": 4,
+  { "name": "guard",
+    "score": 1,
     "id": 11
   },  
-  { "name": "prince",
-    "score": 5,
+  { "name": "guard",
+    "score": 1,
     "id": 12
   },  
-  { "name": "prince",
-    "score": 5,
+  { "name": "guard",
+    "score": 1,
     "id": 13
   },  
-  { "name": "king",
-    "score": 6,
+  { "name": "guard",
+    "score": 1,
     "id": 14
   },  
-  { "name": "countess",
-    "score": 7,
+  { "name": "guard",
+    "score": 1,
     "id": 15
   },  
-  { "name": "princess",
-    "score": 8,
+  { "name": "gaurd",
+    "score": 1,
     "id": 16
   }  
 ]

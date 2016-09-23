@@ -18,26 +18,26 @@ Game.prototype = {
     this.discards.push(discardedCard);
   },
   dealCard: function(numToDiscard = 1, playerToGetCard){
-    dealtCard = this.deck.giveCard(numToDiscard)
+    dealtCard = this.deck.giveCard(numToDiscard);
     playerToGetCard.getCard(dealtCard);
   },
   outOfRound: function(playerId){
     var players = this.players
     var match = null;
     for(var i = 0; i < players.length; i++) {
-        if(players[i].id == playerId) {
-            match = players.splice(i, 1);
-            break;
-        }
+      if(players[i].id == playerId) {
+        match = players.splice(i, 1);
+        break;
+      }
     }
     this.outOfRoundPlayers.push(match)
   },
   rotatePlayers: function(reverse = false){
-    var players = this.players;
     if(reverse)
-      players.unshift(players.pop());
+      this.players.unshift(this.players.pop());
     else
-      players.push(players.shift());
+      this.players.push(this.players.shift()); 
+    this.activePlayer = this.players[0];
   }, 
   setStartingPlayer: function(){
     var players = this.players;
@@ -47,8 +47,8 @@ Game.prototype = {
     return startingPlayer;
   },
   startRoundDeal: function(){
-    var players = this.players
-    var playersLength = this.players.length
+    var players = this.players;
+    var playersLength = this.players.length;
     for (var i = 0; i < playersLength; i++) {
       this.dealCard(1, players[i]);
     }
@@ -56,6 +56,40 @@ Game.prototype = {
   startRound: function(){
     this.discard(1);
     this.startRoundDeal();
+    this.dealCard(1, this.activePlayer);
+  },
+  playTurn: function(chosenCardId){
+    if (this.deck.length == 0){
+      this.activePlayer.playCard(chosenCardId);
+      return
+    }
+    else {
+      this.activePlayer.playCard(chosenCardId);
+      this.rotatePlayers();
+      this.dealCard(1, this.activePlayer)
+    }
+  },
+  checkWinner: function(){
+    var players = this.players;
+    var winner = players[0];
+    var winners = [winner];
+    var highestScore = winner.cards[0].score;
+    for (i=1; i < this.players.length; i++){
+      if (players[i].cards[0].score >= highestScore && players[i].id != winner.id){
+        winners.push(players[i]);
+      }      
+    }
+    return winners
+  },
+  //TODO merge draw/winner into one function
+  playThroughGame: function(){
+    this.startRound();
+    while(this.deck.numberOfCards() > 0){
+      chosenCardId = this.activePlayer.cards[0]
+      this.playTurn(chosenCardId);
+    }
+    chosenCardId = this.activePlayer.cards[0]
+    this.playTurn(chosenCardId);
   }
 }
 
