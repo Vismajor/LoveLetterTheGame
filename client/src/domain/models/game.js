@@ -71,13 +71,17 @@ Game.prototype = {
   },
   checkWinner: function(){
     var players = this.players;
-    var winner = players[0];
-    var winners = [winner];
-    var highestScore = winner.cards[0].score;
-    for (i=1; i < this.players.length; i++){
-      if (players[i].cards[0].score >= highestScore && players[i].id != winner.id){
-        winners.push(players[i]);
+    var winners = [];
+    var highestScore = 0;
+    for (i=0; i < this.players.length; i++){
+      if (players[i].cards[0].score >= highestScore){
+        highestScore = players[i].cards[0].score;
       }      
+    }
+    for (i=0; i < this.players.length; i++){
+      if (players[i].cards[0].score >= highestScore){
+        winners.push(players[i])
+      }
     }
     return winners
   },
