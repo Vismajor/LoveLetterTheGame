@@ -66,13 +66,9 @@ describe('Game', function () {
   }); 
 
   it('should not have any cards after playing through the game and should have a winner', function(){
-    // console.log(game.deck)
     game.playThroughGame();
     assert.equal(game.deck.numberOfCards(), 0)
-    // assert.equal(game.checkWinner()[0].name, "Nora")
-    console.log(game.checkWinner())
-    // console.log(game.checkWinner()[1])
-    // console.log(game.checkWinner()[2])
+    assert.equal(game.checkWinner()[0].name, "Arthur")
   }); 
 
   it('should not have any cards after playing through the game and should multiple winners for a draw', function(){
