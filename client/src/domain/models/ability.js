@@ -3,4 +3,4 @@ var Ability = function(options){
   this.description = options.description
 }
 
-module.exports = Card;
+module.exports = Ability;
