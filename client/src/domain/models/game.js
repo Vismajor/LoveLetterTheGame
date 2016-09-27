@@ -85,7 +85,6 @@ Game.prototype = {
     }
     return winners
   },
-  //TODO merge draw/winner into one function
   playThroughGame: function(){
     this.startRound();
     while(this.deck.numberOfCards() > 0){
