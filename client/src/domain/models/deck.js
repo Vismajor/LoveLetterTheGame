@@ -1,7 +1,7 @@
 var Card = require('./card');
 
 var Deck = function(cards){
-  this.cards = []
+  this.cards = [];
   this.setupDeck(cards);
   this.shuffleCards();
 }

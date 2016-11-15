@@ -1,3 +1,5 @@
+var abilities = require('../abilities')
+
 var Game = function(options){
 	this.players = options.players;
   this.deck = options.deck;
@@ -7,6 +9,10 @@ var Game = function(options){
 }
 
 Game.prototype = {
+  addAbility: function(ability){
+    this.activeAbilities.push(ability);
+  },
+
   addPlayer: function(player){
     this.players.push(player);
   },  

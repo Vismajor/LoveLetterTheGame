@@ -1,8 +1,9 @@
 var Player = function(options){
-  this.id = options.id,
-  this.name = options.name,
-  this.cards = [],
-  this.playedCards = []
+  this.id = options.id;
+  this.name = options.name;
+  this.cards = [];
+  this.playedCards = [];
+  this.protectedTurns = 0;
 }
 
 Player.prototype = {
@@ -18,6 +19,9 @@ Player.prototype = {
   playCard: function(chosenCardId){
     chosenCard = this.cards.splice(chosenCardId, 1)[0];
     this.playedCards.push(chosenCard)
+  },
+  discardCard: function(){
+    this.cards[0].pop();
   },
   checkPlayedScore: function(){
     var score = 0;
