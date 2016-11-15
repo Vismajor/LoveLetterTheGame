@@ -21,7 +21,7 @@ Player.prototype = {
     this.playedCards.push(chosenCard)
   },
   discardCard: function(){
-    this.cards[0].pop();
+    this.cards.pop();
   },
   checkPlayedScore: function(){
     var score = 0;

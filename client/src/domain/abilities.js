@@ -7,7 +7,6 @@ var abilities = [
       }
     }
   },
-  }
   { id: 2,
     description: "Look at another player's hand.",
     behaviour: function(targetPlayer){
@@ -24,11 +23,14 @@ var abilities = [
       higherCard = [...arguments].sort(function (a, b) {
         return b.cards[0].score - a.cards[0].score;
       });
+      return higherCard[0].cards[0];
     }
   },
   { id: 4,
-    description: "Until the next turn, ignore all effects from other players' card."
-
+    description: "Until the next turn, ignore all effects from other players' card.",
+    behaviour: function(targetPlayer, numberOfPlayers){
+      targetPlayer.protectedTurns = numberOfPlayers;
+    }
   },
   { id: 5,
     description: "Choose any player (including yourself) to discard his or her hand and draw a new card."
