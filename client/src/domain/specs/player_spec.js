@@ -37,4 +37,5 @@ describe('Player', function(){
     assert.equal(player.numberOfCards(), 0);
     assert.equal(player.numberOfPlayedCards(), 1);
   });
+
 })

@@ -53,4 +53,30 @@ describe('AbilityTest', function(){
     assert.equal(2, player1.protectedTurns);
   });
 
+  it('can use prince ability', function(){
+    player1.getCard(kingCard);
+    player2.getCard(handmaidCard);
+    abilities[4].behaviour(player2, guardCard);
+    assert.equal("guard", player2.cards[0].name);
+  });
+
+  it('can use king ability', function(){
+    player1.getCard(princeCard);
+    player2.getCard(handmaidCard);
+    abilities[5].behaviour(player1, player2);
+    assert.equal("handmaid", player1.cards[0].name);
+  });
+
+  it('should discard other card if princess is discarded', function(){
+    player1.getCard(princeCard);
+    abilities[7].behaviour(player1);
+    assert.equal(0, player1.numberOfCards())
+  });
+
+
+
+
+
+
+
 })
