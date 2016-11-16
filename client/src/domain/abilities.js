@@ -20,10 +20,8 @@ var abilities = [
       var activePlayerScore = activePlayer.cards[0].score;
 
       if(targetPlayerScore === activePlayerScore)return;
-      higherCard = [...arguments].sort(function (a, b) {
-        return b.cards[0].score - a.cards[0].score;
-      });
-      return higherCard[0].cards[0];
+      var loser = targetPlayerScore > activePlayerScore ? activePlayer : targetPlayer;
+      loser.discardCard();
     }
   },
   { id: 4,
@@ -32,17 +30,34 @@ var abilities = [
       targetPlayer.protectedTurns = numberOfPlayers;
     }
   },
+
   { id: 5,
-    description: "Choose any player (including yourself) to discard his or her hand and draw a new card."
+    description: "Choose any player (including yourself) to discard his or her hand and draw a new card.",
+    behaviour: function(targetPlayer, card){
+      targetPlayer.discardCard();
+      if(card){
+        targetPlayer.getCard(card)
+      }
+    }
   },
+
   { id: 6,
-    description: "Trade hands with another player of your choice."
+    description: "Trade hands with another player of your choice.",
+    behaviour: function(targetPlayer, activePlayer){
+      var card1 = targetPlayer.discardCard();
+      var card2 = activePlayer.discardCard();
+      targetPlayer.getCard(card2);
+      activePlayer.getCard(card1);
+    }
   },
   { id: 7,
     description: "If you have this card and the King or Prince in your hand, you must discard this card."
   },
   { id: 8,
-    description: "If you discard this card, you are out of the round."
+    description: "If you discard this card, you are out of the round.",
+    behaviour: function(activePlayer){
+      activePlayer.discardCard();
+    }
   }
 ]
 

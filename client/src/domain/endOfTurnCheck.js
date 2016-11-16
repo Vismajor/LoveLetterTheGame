@@ -1,0 +1,5 @@
+var endOfTurnCheck = {
+  noCardCheck: function(){
+    
+  }
+}

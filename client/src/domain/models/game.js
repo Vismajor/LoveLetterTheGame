@@ -24,19 +24,21 @@ Game.prototype = {
     this.discards.push(discardedCard);
   },
   dealCard: function(numToDiscard = 1, playerToGetCard){
+    if(!this.deck.cards[0])return
     dealtCard = this.deck.giveCard(numToDiscard);
     playerToGetCard.getCard(dealtCard);
   },
   outOfRound: function(playerId){
-    var players = this.players
-    var match = null;
-    for(var i = 0; i < players.length; i++) {
-      if(players[i].id == playerId) {
-        match = players.splice(i, 1);
-        break;
-      }
-    }
-    this.outOfRoundPlayers.push(match)
+    // var match = null;
+    // for(var i = 0; i < players.length; i++) {
+    //   if(players[i].id == playerId) {
+    //     match = players.splice(i, 1);
+    //     break;
+    //   }
+    // }
+    kickedOutPlayer = this.players.filter(player => player.id === playerId)
+    this.outOfRoundPlayers = this.outOfRoundPlayers.concat(kickedOutPlayer)
+    this.players = this.players.filter(player => player.id != playerId)
   },
   rotatePlayers: function(reverse = false){
     if(reverse)
@@ -65,7 +67,7 @@ Game.prototype = {
     this.dealCard(1, this.activePlayer);
   },
   playTurn: function(chosenCardId){
-    if (this.deck.length == 0){
+    if (this.deck.length === 0){
       this.activePlayer.playCard(chosenCardId);
       return
     }
