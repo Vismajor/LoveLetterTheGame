@@ -43,8 +43,9 @@ describe('Game', function () {
 
   it('should be able to put people out of round', function(){
     game.outOfRound(1)
-    assert.equal(game.numberOfPlayers(), 2);
-    assert.equal(game.outOfRoundPlayers.length, 1);
+    assert.equal(2, game.numberOfPlayers());
+    console.log(game.outOfRoundPlayers)
+    assert.equal(1, game.outOfRoundPlayers.length);
   });  
 
   it('should set the starter player to position 0', function(){

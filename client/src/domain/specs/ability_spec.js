@@ -45,7 +45,7 @@ describe('AbilityTest', function(){
     player1.getCard(princeCard);
     player2.getCard(handmaidCard);
     var card = abilities[2].behaviour(player1, player2)
-    assert.equal("prince", card.name);
+    assert.equal(0, player2.numberOfCards());
   });
 
   it('can use handmaid ability', function(){
